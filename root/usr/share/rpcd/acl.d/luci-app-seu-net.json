@@ -1,0 +1,11 @@
+{
+	"luci-app-seu-net": {
+		"description": "Grant UCI access for luci-app-seu-net",
+		"read": {
+			"uci": [ "seu-net" ]
+		},
+		"write": {
+			"uci": [ "seu-net" ]
+		}
+	}
+}

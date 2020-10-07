@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-seu-net
-PKG_VERSION:=v10
+PKG_VERSION:=v11
 PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -29,6 +29,7 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_BIN) ./root/etc/init.d/seu-net $(1)/etc/init.d
 	$(INSTALL_BIN) ./root/etc/uci-defaults/luci-seu-net $(1)/etc/uci-defaults/luci-seu-net
 	$(INSTALL_BIN) ./root/usr/bin/seu-net/seu-net $(1)/usr/bin/seu-net
+	$(INSTALL_DATA) ./root/usr/share/rpcd/acl.d/luci-app-seu-net.json $(1)/usr/share/rpcd/acl.d/luci-app-seu-net.json
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
