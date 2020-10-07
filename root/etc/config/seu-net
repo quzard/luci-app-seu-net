@@ -1,0 +1,9 @@
+
+config seu-net
+	option autologin '0'
+	option dormitory_enable '0'
+	option method '0'
+	option wan_enable '0'
+	option wan_ip ''
+	option username ''
+	option password ''

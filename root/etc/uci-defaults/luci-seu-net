@@ -1,0 +1,9 @@
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@seu-net[-1]
+	add ucitrack seu-net
+	set ucitrack.@seu-net[-1].init=seu-net
+	commit ucitrack
+EOF
+rm -rf /tmp/luci-seu-net*
+exit 0
