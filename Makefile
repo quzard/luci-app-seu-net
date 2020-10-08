@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-seu-net
-PKG_VERSION:=v11
+PKG_VERSION:=1.2
 PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -23,7 +23,7 @@ define Package/$(PKG_NAME)/conffiles
 endef
 
 define Package/$(PKG_NAME)/install
-	$(INSTALL_DIR) $(1)/etc/init.d $(1)/usr/bin/seu-net $(1)/etc/config $(1)/usr/lib/lua/luci $(1)/etc/uci-defaults
+	$(INSTALL_DIR) $(1)/etc/init.d $(1)/usr/bin/seu-net $(1)/etc/config $(1)/usr/lib/lua/luci $(1)/etc/uci-defaults $(1)/usr/share/rpcd/acl.d
 	$(CP) ./luasrc/* $(1)/usr/lib/lua/luci
 	$(INSTALL_CONF) ./root/etc/config/seu-net $(1)/etc/config
 	$(INSTALL_BIN) ./root/etc/init.d/seu-net $(1)/etc/init.d
