@@ -1,6 +1,13 @@
 # luci-app-seu-net
 - openwrt 东南大学校园网登录助手
 
+  ![pic.png](pic.png)
+
+- 说明
+
+  默认以wan口ip作为登陆ip，如果实际的校园网ip非wan口ip，请选择手动输入校园网ip（如旁路由）
+
+  宿舍区域请选择宿舍，并选择对应的登陆方式
 
 - 编译
 

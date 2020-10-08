@@ -30,7 +30,7 @@ a:value("2",translate("联通"))
 a:value("3",translate("教育网"))
 a.description = translate("请选择你的登录方式")
 
-A=s:option(Flag,"wan_enable",translate("是否手动输入wan ip"))
+A=s:option(Flag,"wan_enable",translate("是否手动输入校园网 ip"))
 A.default=0
 A.rmempty=false
 
