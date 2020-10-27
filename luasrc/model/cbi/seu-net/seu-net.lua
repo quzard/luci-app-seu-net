@@ -1,6 +1,6 @@
-net = require "luci.model.network".init()
-sys = require "luci.sys"
-ifaces = sys.net:devices()
+local net = require "luci.model.network".init()
+local sys = require "luci.sys"
+local ifaces = sys.net:devices()
 
 
 m = Map("seu-net", "东南大学校园网登录助手")
@@ -29,6 +29,40 @@ a:value("1",translate("电信"))
 a:value("2",translate("联通"))
 a:value("3",translate("教育网"))
 a.description = translate("请选择你的登录方式")
+
+
+a = s:option(ListValue, "ipv4_interface", translate("接口名称"))
+a.rmempty = false
+for _, iface in ipairs(ifaces) do
+	if not (iface == "lo" or iface:match("^ifb.*")) then
+		local nets = net:get_interface(iface)
+		nets = nets and nets:get_networks() or {}
+		for k, v in pairs(nets) do
+			nets[k] = nets[k].sid
+		end
+		nets = table.concat(nets, ",")
+		a:value(iface, ((#nets > 0) and "%s (%s)" % {iface, nets} or iface))
+	end
+end
+a.description = translate("<br/>但选择了lan口时一般会默认选择 wan 接口，多拨环境请自行选择接口。未来加入多播登录")
+
+
+a=s:option(Button,"ip",translate("输出后台的IP地址信息（如果不采用该IP，请启动手动输入）"))
+a.inputtitle = translate("输出信息")
+a.write = function()
+	luci.sys.call("/usr/bin/seu-net/seu-net ip")
+	luci.http.redirect(luci.dispatcher.build_url("admin","services","seu-net","general"))
+end
+
+if nixio.fs.access("/tmp/seu-net/ip_tmp") then
+	e=s:option(TextValue,"ip_tmp")
+	e.rows=2
+	e.readonly=true
+	e.cfgvalue = function()
+		return luci.sys.exec("cat /tmp/seu-net/ip_tmp && rm -f /tmp/seu-net/ip_tmp")
+	end
+end
+	
 
 A=s:option(Flag,"wan_enable",translate("是否手动输入校园网 ip"))
 A.default=0
