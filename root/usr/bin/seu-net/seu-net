@@ -187,7 +187,7 @@ do
 	echo "`date "+%Y-%m-%d %H:%M:%S"` 正常运行" >> ${logfile}
 	if [ "$autologin" -eq "1" ];then
 		autologin=$(uci get seu-net.@seu-net[0].autologin)
-		ping -c 1 114.114.114.114 > /dev/null 2>&1
+		ping -c 1 www.baidu.com > /dev/null 2>&1
 		if [ $? -eq 0 ];then
 			echo "网络连接正常" >> ${logfile}
 		else
