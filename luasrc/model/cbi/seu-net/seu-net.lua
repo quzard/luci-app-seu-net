@@ -17,6 +17,10 @@ enabled.default = 0
 enabled.rmempty = false
 enabled.description = translate("勾选后自动登录，防止掉线")
 
+enabled = s:option(Flag, "log_work_fine", translate("输出工作正常的日志"))
+enabled:depends({autologin="1"})
+enabled.default = 0
+
 A=s:option(Flag,"dormitory_enable",translate("宿舍"))
 A.default=0
 A.rmempty=false
