@@ -27,13 +27,13 @@ function get_val(){
 	fi
 	if [ -z "$username" ]; then
 		echo "`date "+%Y-%m-%d %H:%M:%S"`没有用户名" >> ${logfile}
-		exit 1
+		get_val
 	elif [ -z "$password" ]; then
 		echo "`date "+%Y-%m-%d %H:%M:%S"`没有密码" >> ${logfile}
-		exit 1
+		get_val
 	elif [ -z "$wan_ip" ]; then
 		echo "`date "+%Y-%m-%d %H:%M:%S"`没有wan_ip" >> ${logfile}
-		exit 1
+		get_val
 	fi
 	method=$(uci get seu-net.@seu-net[0].method)
 	case $method in
@@ -155,6 +155,7 @@ do
 			fi
 		else
 			echo "`date "+%Y-%m-%d %H:%M:%S"`网络连接不正常" >> ${logfile}
+			echo "wan_ip:"$wan_ip >> ${logfile}
 			login
 		fi
 	fi

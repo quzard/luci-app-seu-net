@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-seu-net
-PKG_VERSION:=1.19
+PKG_VERSION:=1.21
 PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
