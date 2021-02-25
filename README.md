@@ -24,3 +24,6 @@
     #单独编译
     make package/luci-app-seu-net/compile V=99
     ```
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/Quzard/luci-app-seu-net.svg)](https://starchart.cc/Quzard/luci-app-seu-net)
