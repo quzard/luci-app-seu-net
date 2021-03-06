@@ -48,7 +48,7 @@ for _, iface in ipairs(ifaces) do
 		a:value(iface, ((#nets > 0) and "%s (%s)" % {iface, nets} or iface))
 	end
 end
-a.description = translate("<br/>但选择了lan口时一般会默认选择 wan 接口，多拨环境请自行选择接口。未来加入多播登录")
+a.description = translate("<br/>一般会默认选择 wan 接口")
 
 
 a=s:option(Button,"ip",translate("输出后台的IP地址信息（如果不采用该IP，请启动手动输入）"))
