@@ -4,7 +4,7 @@ local ifaces = sys.net:devices()
 
 
 m = Map("seu-net", "东南大学校园网登录助手")
-m.description = translate("原理：使用curl进行发送登录或者注销请求从而实现登录或者注销<br />具体使用方法可查看github：<br />https://github.com/quzard/luci-app-seu-net")
+m.description = translate("原理：使用curl进行发送登录或者注销请求从而实现登录或者注销<br />具体使用方法可查看github：<br />https://github.com/quzard/luci-app-seu-net<br />宿舍手动登录地址10.80.128.2   非宿舍手动登录地址1.1.1.1")
 
 m:section(SimpleSection).template  = "seu-net/seu_status"
 
