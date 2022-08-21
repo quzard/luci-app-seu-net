@@ -77,9 +77,9 @@ function get_val(){
 			*) echo "`date "+%Y-%m-%d %H:%M:%S"`请选择正确的登录方式" >> ${logfile};;
 	esac
 	login_url='https://w.seu.edu.cn:801/eportal/?c=Portal&a=login&callback=dr1003&login_method=1&user_account=%2C0%2C'$username'&user_password='$password'&wlan_user_ip='$wan_ip'&wlan_user_ipv6=&wlan_user_mac=000000000000&wlan_ac_ip=&wlan_ac_name=jlh_me60&jsVersion=3.3.2&v=2207'
-	login_url_dor='http://10.80.128.2:801/eportal/?c=Portal&a=login&callback=dr1004&login_method=1&user_account=%2C0%2C'$username$METHOD'&user_password='$password'&wlan_user_ip='$wan_ip'&wlan_user_ipv6=&wlan_user_mac=000000000000&wlan_ac_ip=&wlan_ac_name=&jsVersion=3.3.3&v=2824'
-	logout_url_dor_mac='http://10.80.128.2:801/eportal/?c=Portal&a=unbind_mac&callback=dr1005&user_account='$username'&wlan_user_mac=&wlan_user_ip='$wan_ip'&jsVersion=3.3.3&v=3180'
-	logout_url_dor='http://10.80.128.2:801/eportal/?c=Portal&a=logout&callback=dr1006&login_method=1&user_account=drcom&user_password=&ac_logout=1&register_mode=1&wlan_user_ip='$wan_ip'&wlan_user_ipv6=&wlan_vlan_id=0&wlan_user_mac=&wlan_ac_ip=&wlan_ac_name=&jsVersion=3.3.3&v=10006'
+	login_url_dor='https://w.seu.edu.cn:802/eportal/?c=Portal&a=login&callback=dr1004&login_method=1&user_account=%2C0%2C'$username$METHOD'&user_password='$password'&wlan_user_ip='$wan_ip'&wlan_user_ipv6=&wlan_user_mac=000000000000&wlan_ac_ip=&wlan_ac_name=&jsVersion=3.3.3&v=2824'
+	logout_url_dor_mac='https://w.seu.edu.cn:802/eportal/?c=Portal&a=unbind_mac&callback=dr1005&user_account='$username'&wlan_user_mac=&wlan_user_ip='$wan_ip'&jsVersion=3.3.3&v=3180'
+	logout_url_dor='https://w.seu.edu.cn:802/eportal/?c=Portal&a=logout&callback=dr1006&login_method=1&user_account=drcom&user_password=&ac_logout=1&register_mode=1&wlan_user_ip='$wan_ip'&wlan_user_ipv6=&wlan_vlan_id=0&wlan_user_mac=&wlan_ac_ip=&wlan_ac_name=&jsVersion=3.3.3&v=10006'
 	logout_url='https://w.seu.edu.cn:801/eportal/?c=Portal&a=logout&callback=dr1004&login_method=1&user_account=drcom&user_password=&ac_logout=1&register_mode=1&wlan_user_ip='$wan_ip'&wlan_user_ipv6=&wlan_vlan_id=1&wlan_user_mac=&wlan_ac_ip=&wlan_ac_name=&jsVersion=3.3.2&v=1385'
 }
 
