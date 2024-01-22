@@ -12,10 +12,13 @@ function get_config(){
 }
 
 function get_val(){
-	log_work_fine=$(uci get seu-net.@seu-net[0].log_work_fine)
 	ipv4_interface=$(uci get seu-net.@seu-net[0].ipv4_interface)
-	ip_temp=$(/sbin/ifconfig ${ipv4_interface}|awk '/inet addr/ {print $2}'|awk -F: '{print $2}'|grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') || ip_temp=$(ubus call network.interface.wan status|grep '\"address\"'|grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 	autologin=$(uci get seu-net.@seu-net[0].autologin)
+	if [ "$autologin" -eq "1" ];then
+		log_work_fine=$(uci get seu-net.@seu-net[0].log_work_fine)
+	else
+		log_work_fine=0
+	fi
 	username=$(uci get seu-net.@seu-net[0].username)
 	password=$(uci get seu-net.@seu-net[0].password)
 	wan_enable=$(uci get seu-net.@seu-net[0].wan_enable)
@@ -23,6 +26,7 @@ function get_val(){
 	if [ "$wan_enable" -eq "1" ];then
 		wan_ip=$(uci get seu-net.@seu-net[0].wan_ip)
 	else
+		ip_temp=$(/sbin/ifconfig ${ipv4_interface}|awk '/inet addr/ {print $2}'|awk -F: '{print $2}'|grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') || ip_temp=$(ubus call network.interface.wan status|grep '\"address\"'|grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 		wan_ip=$ip_temp
 	fi
 	if [ -z "$username" ]; then
@@ -68,7 +72,11 @@ function get_val(){
 			fi
 		done
 	fi
-	method=$(uci get seu-net.@seu-net[0].method)
+	if [ "$dormitory_enable" -eq "1" ];then
+		method=$(uci get seu-net.@seu-net[0].method)
+	else
+		method="3"
+	fi
 	case $method in
 			"") METHOD='%40cmcc';;
 			"1") METHOD='%40telecom';;
